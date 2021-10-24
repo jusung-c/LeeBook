@@ -21,6 +21,7 @@ env = environ.Env(
 )
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+# 부모의 부모인 LeeBook 디렉토리를 base 프로젝트 경로로 지정하겠다는 뜻
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Take environment variables from .env file
@@ -131,7 +132,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# collectstatic 명령어를 통해 프로젝트 안 모든 static 파일들을 모을 떄 어디로 모을 지 설정해준다.
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+
+# 장고 3.2 버전부터는 primary 키 필수로 설정해야 함
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

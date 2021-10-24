@@ -1,0 +1,17 @@
+.leebook_logo {
+    font-family: 'Caveat', cursive;
+}
+
+.leebook_footer_button {
+    font-size: .6rem;
+}
+
+.leebook_footer {
+    text-align:center;
+    margin-top: 2rem;
+}
+
+.leebook_header {
+    text-align:center;
+    margin: 2rem 0;
+}

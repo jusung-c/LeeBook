@@ -1,3 +1,6 @@
+<!--static 관련 파일 불러오기-->
+{% load static %}
+
 <head>
     <meta charset="UTF-8">
     <title>LeeBook</title>
@@ -10,4 +13,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+
+<!--    DEFAULT CSS LINK-->
+<!--    장고가 {% static 'base.css' %} 구문으로 "/static/base.css"로 렌더링-->
+    <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}">
 </head>
