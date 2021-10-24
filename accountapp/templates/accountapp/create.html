@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div style="text-align: center">
+        <form action="{% url 'accountapp:create' %}" method="post">
+            {% csrf_token %}
+
+<!--           AccountCreateView에서 form_class로 정의한 form을 그대로 가져온다.-->
+            {{ form }}
+
+            <input type="submit" class="btn btn-primary">
+        </form>
+    </div>
+
+{% endblock %}
