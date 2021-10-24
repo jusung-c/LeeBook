@@ -7,4 +7,4 @@ def hello_world(request):
     # HttpRestponse는 response를 직접 만들어서 되돌려주는 형태
     # return HttpResponse('Hello World!')
 
-    return render(request, 'base.html')
+    return render(request, 'accountapp/hello_world.html')
