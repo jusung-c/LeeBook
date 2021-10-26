@@ -146,5 +146,7 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# 직접 로그인과 로그아웃 url로 접속했을 때를 대비
 LOGIN_REDIRECT_URL = reverse_lazy('accountapp:hello_world')
 LOGOUT_REDIRECT_URL = reverse_lazy('accountapp:login')
+
