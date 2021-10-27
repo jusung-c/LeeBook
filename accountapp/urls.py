@@ -1,7 +1,7 @@
 from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path
 
-from accountapp.views import hello_world, AccountCreateView
+from accountapp.views import hello_world, AccountCreateView, AccountDetailView
 
 # accountapp:hello_world (app_name:name)으로 바로 라우팅할 수 있도록
 app_name = "accountapp"
@@ -14,4 +14,6 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(), name='logout'),
 
     path('create/', AccountCreateView.as_view(), name='create'),
+    path('detail/<int:pk>', AccountDetailView.as_view(), name='detail'),
+
 ]

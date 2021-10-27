@@ -4,7 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
 from django.urls import reverse, reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, DetailView
 
 from accountapp.models import HelloWorld
 
@@ -40,3 +40,9 @@ class AccountCreateView(CreateView):
 
     # 회원가입할 때 볼 UI
     template_name = 'accountapp/create.html'
+
+class AccountDetailView(DetailView):
+    model = User
+    # 다른 pk로 접속해도 target_user의 정보를 볼 수 있도록 지정해준다.
+    context_object_name = 'target_user'
+    template_name = 'accountapp/detail.html'
