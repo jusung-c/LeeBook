@@ -15,6 +15,10 @@
             <img style="width: 100%; border-radius: 1rem; margin: 2rem 0"
                     src="{{ target_article.image.url }}" alt="">
 
+            <p>
+                {{ target_article.content }}
+            </p>
+
             {% if target_article.writer == user %}
             <a href="{% url 'articleapp:update' pk=target_article.pk %}"
             class="btn btn-primary rounded-pill col-3">
@@ -28,9 +32,11 @@
 
             <hr>
 
-            <p>
-                {{ target_article.content }}
-            </p>
+<!--            detail의 하단에 commentapp을 박아 넣을 것이다.-->
+<!--            with로 현재 target_article을 동기화 시켜줘서 article 변수를 사용할 수 있도록 한 후-->
+<!--            commentapp/create.html의 hidden으로 만든 input에서 사용한다-->
+            {% include 'commentapp/create.html' with article=target_article %}
+
         </div>
     </div>
 
