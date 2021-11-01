@@ -4,7 +4,7 @@ from django.shortcuts import render
 # Create your views here.
 from django.urls import reverse
 from django.utils.decorators import method_decorator
-from django.views.generic import CreateView, DetailView
+from django.views.generic import CreateView, DetailView, ListView
 
 from articleapp.forms import ArticleCreationForm
 from articleapp.models import Article
@@ -32,3 +32,10 @@ class ArticleDetailView(DetailView):
     model = Article
     context_object_name = 'target_article'
     template_name = 'articleapp/detail.html'
+
+class ArticleListView(ListView):
+    model = Article
+    context_object_name = 'article_list'
+    template_name = 'articleapp/list.html'
+    paginate_by = 5
+
