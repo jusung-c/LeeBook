@@ -14,6 +14,7 @@
 
             <img style="width: 100%; border-radius: 1rem; margin: 2rem 0"
                     src="{{ target_article.image.url }}" alt="">
+
             {% if target_article.writer == user %}
             <a href="{% url 'articleapp:update' pk=target_article.pk %}"
             class="btn btn-primary rounded-pill col-3">
@@ -26,7 +27,7 @@
             {% endif %}
 
             <hr>
-            
+
             <p>
                 {{ target_article.content }}
             </p>
