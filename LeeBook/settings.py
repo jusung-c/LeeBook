@@ -39,7 +39,8 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# '*'은 모든 호스트 허용한다는 뜻
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
