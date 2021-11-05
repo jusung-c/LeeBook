@@ -6,24 +6,25 @@
         </div>
 
 <!--        네비게이션 바-->
-        <div>
-            <a href="{% url 'articleapp:list' %}">
+        <div class="leebook_header_navbar">
+            <a href="{% url 'articleapp:list' %}" class="leebook_header_nav">
                 <span>Articles</span>
             </a>
-            <span>nav2</span>
-            <span>nav3</span>
+            <a href="{% url 'projectapp:list' %}" class="leebook_header_nav">
+                <span>Projects</span>
+            </a>
             {% if not user.is_authenticated %}
 <!--        로그인이 성공하면 원래 있던 path로 이동 -->
-            <a href="{% url 'accountapp:login' %}?next={{ request.path }}">
+            <a href="{% url 'accountapp:login' %}?next={{ request.path }}" class="leebook_header_nav">
                 <span>login</span>
             </a>
-            <a href="{% url 'accountapp:create' %}">
+            <a href="{% url 'accountapp:create' %}" class="leebook_header_nav">
                 <span>SignUp</span>
             </a>
             {% else %}
-            <a href="{% url 'accountapp:detail' pk=user.pk %}">
+            <a href="{% url 'accountapp:detail' pk=user.pk %}" class="leebook_header_nav">
                 <span>MyPage</span>
-            <a href="{% url 'accountapp:logout' %}?next={{ request.path }}">
+            <a href="{% url 'accountapp:logout' %}?next={{ request.path }}" class="leebook_header_nav">
                 <span>logout</span>
             </a>
             {% endif %}
