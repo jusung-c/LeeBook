@@ -8,7 +8,7 @@ from django.views.generic import RedirectView
 from projectapp.models import Project
 from subscribeapp.models import Subscription
 
-
+# 로그인을 해야 구독을 할 수 있도록
 @method_decorator(login_required, 'get')
 class SubscriptionView(RedirectView):
 
