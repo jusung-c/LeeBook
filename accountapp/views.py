@@ -11,32 +11,11 @@ from django.views.generic.list import MultipleObjectMixin
 
 from accountapp.decorators import account_ownership_required
 from accountapp.forms import AccountUpdateForm
-from accountapp.models import HelloWorld
 
 # 가독성을 위해 배열로 묶어서 데코레이터를 적용시킨다.
 from articleapp.models import Article
 
 has_ownership = [account_ownership_required, login_required]
-
-@login_required
-def hello_world(request):
-
-        # HttpRestponse는 response를 직접 만들어서 되돌려주는 형태
-        # return HttpResponse('Hello World!')
-
-        if request.method == "POST":
-
-            temp = request.POST.get('hello_world_input')
-
-            # HelloWorld라는 빵 틀에서 나온 새로운 객체가 저장된다.
-            new_hello_world = HelloWorld()
-            new_hello_world.text = temp
-            new_hello_world.save()
-
-            return HttpResponseRedirect(reverse('accountapp:hello_world'))
-        else:
-            hello_world_list = HelloWorld.objects.all()
-            return render(request, 'accountapp/hello_world.html', context={'hello_world_list': hello_world_list})
 
 
 class AccountCreateView(CreateView):
@@ -47,7 +26,7 @@ class AccountCreateView(CreateView):
 
     # 계정 만들기에 성공했다면 어느 경로로 다시 연결해줄 것인지 지정
     # reverse_lazy와 reverse의 차이는 함수형 뷰 / 클래스형 뷰 의 차이이다.
-    success_url = reverse_lazy('accountapp:hello_world')
+    success_url = reverse_lazy('home')
 
     # 회원가입할 때 볼 UI
     template_name = 'accountapp/create.html'
@@ -72,7 +51,7 @@ class AccountUpdateView(UpdateView):
     model = User
     context_object_name = 'target_user'
     form_class = AccountUpdateForm
-    success_url = reverse_lazy('accountapp:hello_world')
+    success_url = reverse_lazy('home')
     template_name = 'accountapp/update.html'
 
     # 아래의 인증 확인 절차를 데코레이터로 코딩해서 가독성을 올린다.

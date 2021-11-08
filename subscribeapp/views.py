@@ -40,7 +40,11 @@ class SubscriptionListView(ListView):
     template_name = 'subscribeapp/list.html'
     paginate_by = 5
 
+    # 특정 조건을 만족하는 게시글을 가져와야 하기 때문에 queryset 관련 함수를 새로 작성한다.
     def get_queryset(self):
+        # user가 구독하고 있는 프로젝트 찾기
         projects = Subscription.objects.filter(user=self.request.user).values_list('project')
+
+        # 프로젝트 안 모든 게시글 가져오기
         article_list = Article.objects.filter(project__in=projects)
         return article_list

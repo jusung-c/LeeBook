@@ -154,7 +154,7 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # 직접 로그인과 로그아웃 url로 접속했을 때를 대비
-LOGIN_REDIRECT_URL = reverse_lazy('accountapp:hello_world')
+LOGIN_REDIRECT_URL = reverse_lazy('home')
 LOGOUT_REDIRECT_URL = reverse_lazy('accountapp:login')
 
 # 주소창에 media/ 이하의 경로에 접근해야 media 파일에 접근 가능

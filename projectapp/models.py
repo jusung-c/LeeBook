@@ -9,3 +9,7 @@ class Project(models.Model):
     description = models.TextField(null=True)
 
     created_at = models.DateField(auto_now_add=True, null=True)
+
+    # 번호 : 제목
+    def __str__(self):
+        return f'{self.pk} : {self.title}'
