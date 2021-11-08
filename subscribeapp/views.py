@@ -2,9 +2,10 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.utils.decorators import method_decorator
-from django.views.generic import RedirectView
+from django.views.generic import RedirectView, ListView
 
 # post는 굳이 없어도 된다.
+from articleapp.models import Article
 from projectapp.models import Project
 from subscribeapp.models import Subscription
 
@@ -30,3 +31,16 @@ class SubscriptionView(RedirectView):
             Subscription(user=user, project=project).save()
 
         return super(SubscriptionView, self).get(request, *args, **kwargs)
+
+
+@method_decorator(login_required, 'get')
+class SubscriptionListView(ListView):
+    model = Article
+    context_object_name = 'article_list'
+    template_name = 'subscribeapp/list.html'
+    paginate_by = 5
+
+    def get_queryset(self):
+        projects = Subscription.objects.filter(user=self.request.user).values_list('project')
+        article_list = Article.objects.filter(project__in=projects)
+        return article_list
